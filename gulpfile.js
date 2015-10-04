@@ -20,7 +20,10 @@ var paths = {
         'app/**/*.service.js',
         'app/**/*.js'
     ],
-    js_vendors: [],
+    js_vendors: [
+        'node_modules/angular/angular.min.js',
+        'node_modules/angular-route/angular-route.min.js'
+    ],
     html: [
         'app/**/*.html'
     ],
@@ -48,10 +51,13 @@ gulp.task('fonts', function () {
 gulp.task('js', function () {
     return gulp.src(paths.js)
         .pipe(concat('app.min.js'))
-        .pipe(minifyJs())
         .pipe(jshint())
+        .pipe(minifyJs())
         .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(gulp.dest(paths.build + '/js'));
+        .pipe(gulp.dest(paths.build + '/js'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
 
@@ -71,7 +77,10 @@ gulp.task('js_vendors', function () {
 gulp.task('html', function () {
     return gulp.src(paths.html)
         .pipe(minifyHtml({empty: true}))
-        .pipe(gulp.dest(paths.build + '/html'));
+        .pipe(gulp.dest(paths.build + '/html'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
 gulp.task('styles', function () {
