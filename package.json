@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/guillaumevincent/votedevaleur#readme",
   "devDependencies": {
+    "bootstrap": "git+https://github.com/twbs/bootstrap.git#v4-dev",
     "browser-sync": "^2.9.8",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
