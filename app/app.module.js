@@ -17,6 +17,12 @@
             })
             .when('/questions/', {
                 templateUrl: 'static/html/components/questions/questions.html'
+            })
+            .when('/new/questions/:id/votes/', {
+                templateUrl: 'static/html/components/votes/newVote.html'
+            })
+            .otherwise({
+                redirectTo: '/'
             });
     }
 
