@@ -9,6 +9,7 @@ var minifyHtml = require('gulp-minify-html');
 var autoprefixer = require('gulp-autoprefixer');
 var minifyCss = require('gulp-minify-css');
 var browserSync = require('browser-sync');
+var jshint = require('gulp-jshint');
 
 var paths = {
     build: [
@@ -48,6 +49,8 @@ gulp.task('js', function () {
     return gulp.src(paths.js)
         .pipe(concat('app.min.js'))
         .pipe(minifyJs())
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
         .pipe(gulp.dest(paths.build + '/js'));
 });
 
